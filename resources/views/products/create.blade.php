@@ -8,7 +8,7 @@
 			</header>
 
 			<div class="card-body">
-			
+			@include('products.form')
 			</div>
 		</div>
 	</div>
