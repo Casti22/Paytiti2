@@ -85,7 +85,17 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         // Actualiza un producto en especifico
+        $product = Product::find($id);
 
+        $product->title = $request->title;
+        $product->price = $request->price;
+        $product->description = $request->description;
+
+        if($product->save()){
+            return redirect('/');
+        }else{
+            return view("products.edit",["product" => $product]);
+        }
     }
 
     /**
