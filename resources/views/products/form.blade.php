@@ -11,7 +11,7 @@
 
 	<div>
 		{!! Form::label('price', 'Precio del producto') !!}
-		{!! Form::text('title','', ['class' => 'form-control']) !!}
+		{!! Form::number('price','0', ['class' => 'form-control']) !!}
 	</div>
 
 	<div class="">
