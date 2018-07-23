@@ -25,7 +25,8 @@ class ProductsController extends Controller
     public function create()
     {
         // Muestra un formulario para crear nuevos recursos (productos)
-        return view('products.create');
+        $product = new Product;
+        return view('products.create', ["product" => $product]);
     }
 
     /**
@@ -70,6 +71,8 @@ class ProductsController extends Controller
     public function edit($id)
     {
         // Muestra un formulario para editar un producto en especifico
+        $product = Product::find($id);
+        return view("products.edit",["product" => $product]);
     }
 
     /**
