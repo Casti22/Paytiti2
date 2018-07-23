@@ -15,7 +15,7 @@ class ProductsController extends Controller
     public function index()
     {
         // Muestra una coleccion del recurso
-        $products = Product::all();
+        $products = Product::paginate(15);
 
         return view('products.index', ['products' => $products]);
     }
