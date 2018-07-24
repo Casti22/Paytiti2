@@ -113,5 +113,7 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         // Elimina un recurso en especifico
+        Product::destroy($id);
+        return redirect('/productos');
     }
 }
