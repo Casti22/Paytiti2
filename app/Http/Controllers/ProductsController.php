@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use App\Http\Resources\ProductsCollection;
 
 class ProductsController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductsController extends Controller
         $products = Product::paginate(15);
 
         if ($request->wantsJson()) {
-            return $products->toJson();
+            return new ProductsCollection($products);
         }
 
         return view('products.index', ['products' => $products]);
