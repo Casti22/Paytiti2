@@ -15,10 +15,14 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // Muestra una coleccion del recurso
         $products = Product::paginate(15);
+
+        if ($request->wantsJson()) {
+            return $products->toJson();
+        }
 
         return view('products.index', ['products' => $products]);
     }
