@@ -1,16 +1,8 @@
 <template lang="html">
 	<section>
-		<transition-group 
-		tag="div"
-		:css="false"
-		name="fadeIn"
-		@before-enter="beforeEnter"
-		@enter="enter"
-		@leave="leave"
-		class="row">
+		<material-transition-group tag="div" class="row">
 			<product-card-component :key="product.id" :data-index="index" v-bind:product="product" v-for="(product, index) in products"></product-card-component>
-			
-		</transition-group> 
+		</material-transition-group> 
 	</section>
 </template>
 
@@ -19,10 +11,7 @@ export default {
 	data(){
 		return {
 			name: 'Products Component v2',
-			products: [
-				// {title: 'Iphone 6', price: 70000, description: 'Una descripcion'},
-				// {title: 'Tarjeta GooglePlay', price: 2500, description: 'Una descripcion'},
-			],
+			products: [],
 			endpoint: "/productos"
 		}	
 	},
@@ -35,22 +24,6 @@ export default {
 				console.log(response.data.data);
 				this.products = response.data.data;
 			});
-		},
-		beforeEnter(el){
-			el.style.opacity = 0;
-			el.style.transform = "scale(0)";
-			el.style.transition = "all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1)";
-		},
-		enter(el){
-			const delay = 200 * el.dataset.index;
-			setTimeout(() => {
-				el.style.opacity = 1;
-				el.style.transform = "scale(1)";	
-			}, delay);
-		},
-		leave(el){
-			el.style.opacity = 0;
-			el.style.transform = "scale(0)";
 		}
 	}
 }
