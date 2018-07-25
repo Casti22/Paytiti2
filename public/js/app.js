@@ -47463,8 +47463,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			name: 'Products Component v2',
-			products: [{ title: 'Iphone 6', price: 70000, description: 'Una descripcion' }, { title: 'Tarjeta GooglePlay', price: 2500, description: 'Una descripcion' }]
+			products: [
+				// {title: 'Iphone 6', price: 70000, description: 'Una descripcion'},
+				// {title: 'Tarjeta GooglePlay', price: 2500, description: 'Una descripcion'},
+			],
+			endpoint: "/productos"
 		};
+	},
+	created: function created() {
+		this.fetchProducts();
+	},
+
+	methods: {
+		fetchProducts: function fetchProducts() {
+			var _this = this;
+
+			axios.get(this.endpoint).then(function (response) {
+				console.log(response.data.data);
+				_this.products = response.data.data;
+			});
+		}
 	}
 });
 
@@ -47602,7 +47620,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("h4", { staticClass: "card-subtitle" }, [
-          _vm._v(_vm._s(_vm.product.price))
+          _vm._v(_vm._s(_vm.product.humanPrice))
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [
