@@ -22,6 +22,7 @@ class CreateProductInShoppingCartsTable extends Migration
             $table->integer("shopping_cart_id")->unsigned();
             $table->foreign("shopping_cart_id")->references("id")->on("shopping_carts");
 
+            
             // $table->integer("amount")->default(1);
 
             $table->timestamps();
