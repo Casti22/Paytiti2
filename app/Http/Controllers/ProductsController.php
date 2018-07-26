@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use App\ShoppingCart;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProductsCollection;
 
@@ -19,14 +18,6 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        $sessionName = 'shopping_cart_id';
-
-        $shopping_cart_id = $request->session()->get($sessionName);
-
-        $shopping_cart = ShoppingCart::findOrCreateById($shopping_cart_id);
-
-        $request->session()->put($sessionName, $shopping_cart->id);
-
         // Muestra una coleccion del recurso
         $products = Product::paginate(15);
 
@@ -34,7 +25,7 @@ class ProductsController extends Controller
             return new ProductsCollection($products);
         }
 
-        return view('products.index', ['products' => $products, 'shopping_cart' => $shopping_cart]);
+        return view('products.index', ['products' => $products]);
     }
 
     /**
