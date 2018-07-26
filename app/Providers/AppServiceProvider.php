@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     
             \Session::put($sessionName, $shopping_cart->id);
 
-            $view->with('productsCount', $shopping_cart->id);
+            $view->with('productsCount', $shopping_cart->productsCount());
         });
     }
 
