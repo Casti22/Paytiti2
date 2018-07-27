@@ -24,7 +24,7 @@ export default {
 					'Content-Type': 'application/json'
 				}
 			}).then(()=>{
-				console.log('Se agrego el producto');
+				window.store.commit("increment");
 			})
 		}
 	}
