@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/carrito', 'ShoppingCartController@show')->name('shopping_cart.show');
+
 Route::resource('productos', 'ProductsController');
 
 Route::resource('in_shopping_carts', 'ProductInShoppingCartsController', ["only" => ["store", "destroy"]]);

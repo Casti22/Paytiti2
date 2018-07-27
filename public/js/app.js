@@ -47717,6 +47717,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: {
@@ -47740,7 +47744,9 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "card-body padding" }, [
         _c("h2", { staticClass: "card-title" }, [
-          _vm._v(_vm._s(_vm.product.title))
+          _c("a", { attrs: { href: "/productos/" + _vm.product.id } }, [
+            _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.product.title) + "\n\t\t\t\t")
+          ])
         ]),
         _vm._v(" "),
         _c("h4", { staticClass: "card-subtitle" }, [
