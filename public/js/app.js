@@ -14002,6 +14002,9 @@ window.Vue = __webpack_require__(37);
 
 Vue.component('example-component', __webpack_require__(40));
 Vue.component('products-component', __webpack_require__(43));
+
+Vue.component('add-product-btn', __webpack_require__(56));
+
 Vue.component('product-card-component', __webpack_require__(51));
 Vue.component('material-transition-group', __webpack_require__(54));
 
@@ -47730,6 +47733,116 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		return createElement('transition-group', data, context.children);
 	}
 });
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(11)
+/* script */
+var __vue_script__ = __webpack_require__(57)
+/* template */
+var __vue_template__ = __webpack_require__(58)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\products\\AddToCartComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-74d699b2", Component.options)
+  } else {
+    hotAPI.reload("data-v-74d699b2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			message: 'Agregar al carrito',
+			endpoint: '/in_shopping_carts'
+		};
+	},
+
+	props: { product: { type: Object } },
+	methods: {
+		addToCart: function addToCart() {
+			axios({
+				method: 'POST',
+				url: this.endpoint,
+				data: {
+					product_id: this.product.id
+				},
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				}
+			}).then(function () {
+				console.log('Se agrego el producto');
+			});
+		}
+	}
+});
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    { staticClass: "btn btn-primary", on: { click: _vm.addToCart } },
+    [_vm._v(_vm._s(_vm.message))]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-74d699b2", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
