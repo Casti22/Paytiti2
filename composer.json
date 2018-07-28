@@ -10,7 +10,9 @@
         "laravel/framework": "5.6.*",
         "laravel/homestead": "^7.12",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html": "^5.6.0"
+        "laravelcollective/html": "^5.6.0",
+        "paypal/rest-api-sdk-php": "dev-2.0-beta"
+        
     },
     "require-dev": {
         "filp/whoops": "^2.0",
