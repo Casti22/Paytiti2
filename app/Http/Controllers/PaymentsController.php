@@ -18,6 +18,12 @@ class PaymentsController extends Controller
 
        $response = $paypal->charge($amount);
 
-       return var_dump($response);
+       $redirectLinks = array_filter($response->result->links, function($link){
+           return $link->method == 'REDIRECT';
+       });
+
+       $redirectLinks = array_values($redirectLinks);
+
+       return redirect($redirectLinks[0]->href);
     }
 }
