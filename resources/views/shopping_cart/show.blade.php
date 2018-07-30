@@ -16,7 +16,7 @@
 						<img src="/images/cards.png" alt="cards" width="120">
 						<img src="/images/paypal.png" alt="paypal" width="120">
 						<div>
-							<a href="" class="btn btn-primary">Proceder al pago</a>
+							<a href="/pagar" class="btn btn-primary">Proceder al pago</a>
 						</div>
 					</div>
 				</div>
