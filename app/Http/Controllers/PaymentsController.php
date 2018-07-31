@@ -40,7 +40,7 @@ class PaymentsController extends Controller
 
         if($order){
             Session::remove('shopping_cart_id');
-            return view('payments.succes', ['shopping_cart' => $request->shopping_cart, 'order' => $order]);
+            return view('payments.success', ['shopping_cart' => $request->shopping_cart, 'order' => $order]);
 
         }
 
