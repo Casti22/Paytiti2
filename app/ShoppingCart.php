@@ -25,4 +25,8 @@ class ShoppingCart extends Model
     public function amount(){
         return $this->products()->sum("price") / 100;
     }
+
+    public function amountInCents(){
+        return $this->products()->sum("price");
+    }
 }

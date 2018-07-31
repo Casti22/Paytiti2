@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\PayPal;
 use Illuminate\Http\Request;
+
+use Session;
 
 class PaymentsController extends Controller
 {
@@ -31,6 +34,18 @@ class PaymentsController extends Controller
         $paypal = new PayPal();
         $response = $paypal->execute($request->paymentId, $request->PayerID);
 
-        var_dump($response);
+       if($response->statusCode == 200){
+
+        $order = Order::createFromPaypalResponse($response->result, $request->shopping_cart);
+
+        if($order){
+            Session::remove('shopping_cart_id');
+            return view('payments.succes', ['shopping_cart' => $request->shopping_cart, 'order' => $order]);
+
+        }
+
+       }else{
+        return redirect(URL::route('shopping_cart.show'));
+       }
     }
 }

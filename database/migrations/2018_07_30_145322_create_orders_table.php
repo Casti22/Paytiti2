@@ -15,6 +15,20 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer("shopping_cart_id")->nullable()->unique();
+            $table->integer('total')->default(0);
+            $table->integer('guide_number')->nullable();
+
+            $table->String('email')->default('');
+
+            $table->string('line1')->default("");
+            $table->string('line2')->nullable(true);
+            $table->string('city')->default("");
+            $table->string('postal_code')->default("");
+            $table->string('country_code')->default("");
+            $table->string('state')->default("");
+            $table->string('recipient_name')->default("");
+
             $table->timestamps();
         });
     }
