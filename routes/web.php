@@ -28,3 +28,19 @@ Route::resource('productos', 'ProductsController');
 Route::resource('in_shopping_carts', 'ProductInShoppingCartsController', ["only" => ["store", "destroy"]]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/productos/images/{filename}', function($filename){
+    $path = storage_path("app/images/$filename");
+
+    if(!\File::exists($path)) abort(404);
+
+    $file = \File::get($path);
+
+    $type = \File::mimeType($path);
+
+    $response = Response::make($file, 200);
+
+    $response->header("Content-Type", $type);
+
+    return $response;
+});

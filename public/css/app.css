@@ -10513,3 +10513,7 @@ a.text-dark:focus {
   border-top: solid 1px #eee;
 }
 
+.card-product .product-avatar {
+  max-width: 100%;
+}
+

@@ -48,18 +48,44 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        // Almacena en la BD nuevos recursos
-        $options = [
-            'title' => $request->title,
-            'description' => $request->description,
-            'price' => $request->price
-        ];
 
-        if(Product::create($options)){
+        // Almacena en la BD nuevos recursos
+        $hasFile = $request->hasFile('image_url') && $request->image_url->isValid();
+        
+        $product = new Product;
+
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        // $options = [
+        //     'id' => $request->id,
+        //     'title' => $request->title,
+        //     'description' => $request->description,
+        //     'price' => $request->price,
+        //     'image_url' => $request->image_url,
+        // ];
+
+        if($hasFile){
+            $extension = $request->image_url->extension();
+            $product->extension = $extension;
+        }
+        
+        if($product->save()){
+            if($hasFile){
+                $request->image_url->storeAs('images', "$product->id.$extension");
+            }
             return redirect('/productos');
         }else{
             return view('products.create');
         }
+        // if(Product::create($options)){
+        //     if($hasFile){
+        //         $request->image_url->storeAs('images',"$request->id.$extension");
+        //     }
+        //     return redirect('/productos');
+        // }else{
+        //     return view('products.create');
+        // }
     }
 
     /**

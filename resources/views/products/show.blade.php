@@ -6,19 +6,28 @@
 		<div class="card">
 			<header class="padding text-center bg-primary">
 			</header>
-			<div class="card-body padding">
-				<h1 class="card-title">
+			<div class="row card-body padding">
+				<h1 class="col-xs-12 card-title">
 					{{$product->title}}
 				</h1>
-				<h4 class="card-subtitle">{{$product->price}}</h4>
+				<div class="col-xs-12 col-md-6">
+					<h4 class="card-subtitle">{{$product->price}}</h4>
+					<p class="card-text">{{$product->description}}</p>
+				</div>
 
-				<p class="card-text">{{$product->description}}</p>
+				<div class="col-xs-12 col-md-6">
+					@if($product->extension)
+						<img src="{{url("/productos/images/$product->id.$product->extension")}}" class="product-avatar">
+					@endif
+				</div>
 
 				<div class="card-actions">
 				<add-product-btn :product='{!! json_encode($product) !!}'></add-product-btn>
 					@include("products.delete")
 				</div>
 			</div>
+
+
 		</div>
 	</div>
 </div>
