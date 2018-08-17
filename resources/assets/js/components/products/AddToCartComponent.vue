@@ -1,5 +1,5 @@
 <template lang="html">
-<button @click="addToCart" class="btn btn-primary">{{message}}</button>
+<button @click="addToCart" class="btn btn-primary btn-block">{{message}}</button>
 </template>
 
 <script>

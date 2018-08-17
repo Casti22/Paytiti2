@@ -1,5 +1,5 @@
 <template lang="html">
-	<a href="/carrito">Mi carrito {{productsCount}}</a>
+	<a href="/carrito" class="text-white">Mi carrito {{productsCount}}</a>
 </template>
 
 <script>

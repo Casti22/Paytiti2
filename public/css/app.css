@@ -10514,6 +10514,7 @@ a.text-dark:focus {
 }
 
 .card-product .product-avatar {
-  max-width: 100%;
+  max-width: 20%;
+  min-width: 20%;
 }
 
